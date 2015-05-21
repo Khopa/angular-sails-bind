@@ -17,7 +17,7 @@ Add it as a dependency to your angular app, and then bind any model IN JUST ONE 
   $sailsBind.bind("<your model name here>", $scope);
 ```
 
-how much it weights? It takes only 2073 bytes of pure javascript to add this magic to your angularjs project.
+how much it weights? It takes only 3171 bytes of pure javascript to add this magic to your angularjs project.
 
 What it does:
 
@@ -69,6 +69,28 @@ You can filter the initial model content by adding a third parameter to the $sai
 ```javascript
    $sailsBind.bind("item", $scope, {"name": {"contains": "Foo"}};
 ```
+
+
+Getting events:
+
+```javascript
+   $sailsBind.bind("item", $scope, {"name": {"contains": "Foo"}, onEvent};
+
+   function onEvent(event, message){
+    // Event are triggered after the scope has been updated according to this event data : 
+    // initialized => when the collection is initialized
+    // created     => when an object is created and added to collection
+    // updated     => when an object is updated
+    // destroyed   => when an object is deleted
+    // addedTo     => when an instance of the object has been added to the collection of another model (Must be triggered manually in sails with pub events)
+    // removedFrom => when an instance of the object has been removed of the collection of another model (Must be triggered manually in sails with pub events)
+    console.log(event + " -> " + JSON.stringify(message))
+   }
+
+```
+
+
+
 
 This third parameter is a json that follows the "where" clause syntax, as documented in sails' find call: 
 [http://beta.sailsjs.org/#!documentation/reference/Blueprints/FindRecords.html]()
