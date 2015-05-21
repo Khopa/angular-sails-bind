@@ -25,6 +25,8 @@ What it does:
 * Retrieves the model data from the backend using socket.
 * Watches for changes made by the user in the UI and updates the backend immediately.
 * Watches for changes made in the backend and updates the UI immediately.
+* Ensure consistency for relationships between different models
+* Propagate events through easy to use callbacks
 
 Installation:
 
